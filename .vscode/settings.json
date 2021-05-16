@@ -8,4 +8,7 @@
         "*_test.py"
     ],
     "python.testing.unittestEnabled": true,
+    "terminal.integrated.env.osx": {
+        "PYTHONPATH": "./src"
+      }
 }
