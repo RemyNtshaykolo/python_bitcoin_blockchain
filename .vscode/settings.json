@@ -1,0 +1,11 @@
+{
+    "python.formatting.provider": "black",
+    "python.testing.unittestArgs": [
+        "-v",
+        "-s",
+        ".",
+        "-p",
+        "*_test.py"
+    ],
+    "python.testing.unittestEnabled": true,
+}
