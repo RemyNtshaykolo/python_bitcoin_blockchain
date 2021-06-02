@@ -1,10 +1,8 @@
 from transaction import Transaction
 from blockchain import Blockchain
-from cryptography.hazmat.primitives import serialization as crypto_serialization
 from cryptography.hazmat.primitives.asymmetric import rsa
 from cryptography.hazmat.backends import default_backend as crypto_default_backend
-from cryptography.hazmat.primitives.asymmetric import padding
-from cryptography.hazmat.primitives import hashes
+
 
 from uuid import uuid4
 
