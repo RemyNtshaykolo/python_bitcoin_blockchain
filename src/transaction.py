@@ -32,6 +32,7 @@ class Transaction:
 
     @property
     def encoded(self):
+        """Return the bit encoded string representation of the transaction"""
         return str(self).encode()
 
     def is_signed(self):
