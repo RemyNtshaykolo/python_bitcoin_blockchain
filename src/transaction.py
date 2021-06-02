@@ -1,12 +1,16 @@
+from __future__ import annotations
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.asymmetric import padding
-from .user import User
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from user import User
 
 
 class Transaction:
-    def __init__(self, sender: User, receiver: User, amount: float):
-        self.__sender: User = sender
-        self.__receiver: User = receiver
+    def __init__(self, sender: "User", receiver: "User", amount: float):
+        self.__sender: "User" = sender
+        self.__receiver: "User" = receiver
         self.__amount: float = amount
         self.__signature = None
 
@@ -20,11 +24,15 @@ class Transaction:
 
     def __str__(self):
         """Return a string representation of a transaction"""
-        return "{} send {} to {}".format(
+        return "{}_send_{}_to_{}".format(
             self.__sender,
             self.__amount,
             self.__receiver,
         )
+
+    @property
+    def encoded(self):
+        return str(self).encode()
 
     def is_signed(self):
         """Check if a transaction if signed. Return False if not and True otherwise"""
@@ -34,12 +42,8 @@ class Transaction:
         """
         Generate the transaction signature from a private key
         """
-
-        formated_transaction = "{}_{}_{}".format(
-            self.__sender.name, self.__receiver.name, str(self.__amount)
-        )
         self.__signature = private_key.sign(
-            formated_transaction.encode(),
+            self.encoded,
             padding.PSS(mgf=padding.MGF1(hashes.SHA256()), salt_length=padding.PSS.MAX_LENGTH),
             hashes.SHA256(),
         )
@@ -48,12 +52,9 @@ class Transaction:
         """
         Verify that the transaction match its signature
         """
-        formated_transaction = "{}_{}_{}".format(
-            self.__sender.name, self.__receiver.name, str(self.__amount)
-        )
         self.__sender.public_key.verify(
             self.__signature,
-            formated_transaction.encode(),
+            self.encoded,
             padding.PSS(mgf=padding.MGF1(hashes.SHA256()), salt_length=padding.PSS.MAX_LENGTH),
             hashes.SHA256(),
         )
