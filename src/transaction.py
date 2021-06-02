@@ -8,9 +8,9 @@ if TYPE_CHECKING:
 
 
 class Transaction:
-    def __init__(self, sender: "User", receiver: "User", amount: float):
-        self.__sender: "User" = sender
-        self.__receiver: "User" = receiver
+    def __init__(self, sender: User, receiver: User, amount: float):
+        self.__sender: User = sender
+        self.__receiver: User = receiver
         self.__amount: float = amount
         self.__signature = None
 
