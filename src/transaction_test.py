@@ -6,6 +6,7 @@ from cryptography.exceptions import InvalidSignature
 
 class TransactionTest(TestCase):
     def test_transaction(self):
+        """Sign a transaction with a user, and then verify it with another user"""
         john = User("john")
         marie = User("marie")
         transaction = Transaction(john, marie, 20)
