@@ -1,5 +1,4 @@
 {
-    "python.formatting.provider": "black",
     "python.testing.unittestArgs": [
         "-v",
         "-s",
@@ -8,4 +7,7 @@
         "*_test.py"
     ],
     "python.testing.unittestEnabled": true,
+    "terminal.integrated.env.osx": {
+        "PYTHONPATH": "./src"
+      }
 }
