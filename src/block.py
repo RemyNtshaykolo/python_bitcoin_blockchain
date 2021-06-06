@@ -1,6 +1,4 @@
 from typing import Dict, List
-
-from cryptography.hazmat.primitives.hashes import SHA256
 from transaction import Transaction
 import logging as log
 
