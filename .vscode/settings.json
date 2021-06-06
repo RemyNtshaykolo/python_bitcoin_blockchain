@@ -7,6 +7,8 @@
         "*_test.py"
     ],
     "python.testing.unittestEnabled": true,
+    "python.formatting.provider": "black",
+    "editor.formatOnSave": true,
     "terminal.integrated.env.osx": {
         "PYTHONPATH": "./src"
       }

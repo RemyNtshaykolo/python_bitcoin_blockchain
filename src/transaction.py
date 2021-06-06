@@ -22,6 +22,14 @@ class Transaction:
     def amount(self, value):
         self.__amount = value
 
+    @property
+    def sender(self):
+        return self.__sender
+
+    @property
+    def receiver(self):
+        return self.__receiver
+
     def __str__(self):
         """Return a string representation of a transaction"""
         return "{}_send_{}_to_{}".format(

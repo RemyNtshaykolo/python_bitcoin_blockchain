@@ -27,6 +27,10 @@ class User:
         return self.__public_key
 
     @property
+    def public_key_str(self):
+        return self.__public_key.public_bytes
+
+    @property
     def name(self):
         return self.__name
 
